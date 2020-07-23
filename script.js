@@ -3,7 +3,7 @@ var generateBtn = document.querySelector("#generate");
 
 // Write password to the #password input
 
-// Will use charAt to call a character for lower and upper alphabet and special sign"
+// All the characters in one string, will use charAt to call later
 var alphabetSmall = "abcdefghijklmnopqrstuvwxyz";
 var alphabetUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numberSign = "0123456789";
@@ -16,24 +16,28 @@ function randomInt(min, max) {
 }
 
 function generatePassword() {
-  var passLength;
 
-  // Restrict user to continue if prompt is under 8, over 128, or empty
   do {
-    passLength = parseInt(
-      prompt("How long do your want your password to be? Must at least 8 characters and no more than 128 characters.")
-    );
-  } while (passLength < 8 || passLength > 128 || isNaN(passLength))
+    // Prompt user for length
+    var passLength = prompt("How long do your want your password to be? Must be at least 8 characters and no more than 128 characters.");
+    
+    // Parse answer into an integer, empty or anything other than integers return NaN
+    passLength = parseInt(passLength);
 
-  console.log(passLength);
+    // Stop the function if passLength is NaN
+    if (isNaN(passLength)) {
+      alert("Please enter a valid number");
+      return "No password given. Please try again.";
+    }
+  } while (passLength < 8 || passLength > 128) // Restrict the user from continuing with do while loop if prompt is less than 8 or greater than 128
 
+  // Declare the rest of the confirms
   var smallCase = confirm("Do you want small cases?");
   var upperCase = confirm("Do you want upper cases?");
   var numCase = confirm("Do you want numbers?");
   var specialCase = confirm("Do you want special cases?");
 
-  var addString;
-  var passString = "";
+  // Declare a variable to be used later for the switch statement
   var order;
 
   //Determine how many combinations of prompts
@@ -98,6 +102,9 @@ function generatePassword() {
       }
     }
   }
+
+  var addString;
+  var passString = "";
 
   switch (order) {
     case 1:
