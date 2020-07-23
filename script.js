@@ -1,8 +1,3 @@
-// Assignment Code
-var generateBtn = document.querySelector("#generate");
-
-// Write password to the #password input
-
 // All the characters in one string, will use charAt to call later
 var alphabetSmall = "abcdefghijklmnopqrstuvwxyz";
 var alphabetUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -37,10 +32,10 @@ function generatePassword() {
   var numCase = confirm("Do you want numbers?");
   var specialCase = confirm("Do you want special cases?");
 
-  // Declare a variable to be used later for the switch statement
+  // Declare a variable to be used later as an expression for the switch statement, will be assigned as a combination
   var order;
 
-  //Determine how many combinations of prompts
+  //Determine how many combinations of prompts, should be 16 combos
   if (smallCase) {
     if (upperCase) {
       if (numCase) {
@@ -103,6 +98,7 @@ function generatePassword() {
     }
   }
 
+  // addString will combine all the characters, passString will gain characters randomly pulled from addString
   var addString;
   var passString = "";
 
@@ -247,11 +243,15 @@ function generatePassword() {
 
       return passString;
     case 16:
-      //No prompts accepted
+      //No prompts chosen
       return "No password given. Please try again.";
   }
 }
 
+// Assignment Code
+var generateBtn = document.querySelector("#generate");
+
+// Write password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
