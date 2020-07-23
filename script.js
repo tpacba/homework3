@@ -7,16 +7,26 @@ var generateBtn = document.querySelector("#generate");
 var alphabetSmall = "abcdefghijklmnopqrstuvwxyz";
 var alphabetUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numberSign = "0123456789";
-var specialSign = "!#$%&*+-/:;<=>?@\^_~";
+var specialSign = "!#$%&*+-/:;<=>?@^_~";
 
 // Returns a random integer between ranges
 function randomInt(min, max) {
-  var x = Math.floor((Math.random() * max) + min);
+  var x = Math.floor(Math.random() * max + min);
   return x;
 }
 
 function generatePassword() {
-  var passLength = parseInt(prompt("How long do your want your password to be?"));
+  var passLength;
+
+  // Restrict user to continue if prompt is under 8, over 128, or empty
+  do {
+    passLength = parseInt(
+      prompt("How long do your want your password to be? Must at least 8 characters and no more than 128 characters.")
+    );
+  } while (passLength < 8 || passLength > 128 || isNaN(passLength))
+
+  console.log(passLength);
+
   var smallCase = confirm("Do you want small cases?");
   var upperCase = confirm("Do you want upper cases?");
   var numCase = confirm("Do you want numbers?");
@@ -24,37 +34,9 @@ function generatePassword() {
 
   var addString;
   var passString = "";
-  
-  /*  // Case 1
-  if (smallCase || upperCase || numCase || specialCase) {
-
-    // Combine all needed characters for the prompt into addString
-    addString = alphabetSmall + alphabetUpper + numberSign + specialSign;
-
-    // Count how long the password should be
-    for (var i = 0; i < passLength; i++) {
-
-      // Add a random character from addString into passString
-      passString = passString + addString.charAt(randomInt(0,addString.length)); //
-    }
-
-    // Return a string
-    return passString; 
-  } */
-
-
-
-
-
-
-
-
-
-
-
-// Tried to use switch...Realized it's more coding
-
   var order;
+
+  //Determine how many combinations of prompts
   if (smallCase) {
     if (upperCase) {
       if (numCase) {
@@ -124,9 +106,9 @@ function generatePassword() {
 
       // Count how long the password should be
       for (var i = 0; i < passLength; i++) {
-
-      // Add a random character from addString into passString
-      passString = passString + addString.charAt(randomInt(0,addString.length));
+        // Add a random character from addString into passString
+        passString =
+          passString + addString.charAt(randomInt(0, addString.length));
       }
 
       // Return a string
@@ -135,7 +117,8 @@ function generatePassword() {
       addString = alphabetSmall + alphabetUpper + numberSign;
 
       for (var i = 0; i < passLength; i++) {
-      passString = passString + addString.charAt(randomInt(0,addString.length));
+        passString =
+          passString + addString.charAt(randomInt(0, addString.length));
       }
 
       return passString;
@@ -143,7 +126,8 @@ function generatePassword() {
       addString = alphabetSmall + alphabetUpper + specialSign;
 
       for (var i = 0; i < passLength; i++) {
-      passString = passString + addString.charAt(randomInt(0,addString.length));
+        passString =
+          passString + addString.charAt(randomInt(0, addString.length));
       }
 
       return passString;
@@ -151,7 +135,8 @@ function generatePassword() {
       addString = alphabetSmall + alphabetUpper;
 
       for (var i = 0; i < passLength; i++) {
-      passString = passString + addString.charAt(randomInt(0,addString.length));
+        passString =
+          passString + addString.charAt(randomInt(0, addString.length));
       }
 
       return passString;
@@ -159,7 +144,8 @@ function generatePassword() {
       addString = alphabetSmall + numberSign + specialSign;
 
       for (var i = 0; i < passLength; i++) {
-      passString = passString + addString.charAt(randomInt(0,addString.length));
+        passString =
+          passString + addString.charAt(randomInt(0, addString.length));
       }
 
       return passString;
@@ -167,15 +153,17 @@ function generatePassword() {
       addString = alphabetSmall + numberSign;
 
       for (var i = 0; i < passLength; i++) {
-      passString = passString + addString.charAt(randomInt(0,addString.length));
+        passString =
+          passString + addString.charAt(randomInt(0, addString.length));
       }
 
       return passString;
     case 7:
-      addString = alphabetSmall  + specialSign;
+      addString = alphabetSmall + specialSign;
 
       for (var i = 0; i < passLength; i++) {
-      passString = passString + addString.charAt(randomInt(0,addString.length));
+        passString =
+          passString + addString.charAt(randomInt(0, addString.length));
       }
 
       return passString;
@@ -183,7 +171,8 @@ function generatePassword() {
       addString = alphabetSmall;
 
       for (var i = 0; i < passLength; i++) {
-      passString = passString + addString.charAt(randomInt(0,addString.length));
+        passString =
+          passString + addString.charAt(randomInt(0, addString.length));
       }
 
       return passString;
@@ -191,7 +180,8 @@ function generatePassword() {
       addString = alphabetUpper + numberSign + specialSign;
 
       for (var i = 0; i < passLength; i++) {
-      passString = passString + addString.charAt(randomInt(0,addString.length));
+        passString =
+          passString + addString.charAt(randomInt(0, addString.length));
       }
 
       return passString;
@@ -199,7 +189,8 @@ function generatePassword() {
       addString = alphabetUpper + numberSign;
 
       for (var i = 0; i < passLength; i++) {
-      passString = passString + addString.charAt(randomInt(0,addString.length));
+        passString =
+          passString + addString.charAt(randomInt(0, addString.length));
       }
 
       return passString;
@@ -207,15 +198,17 @@ function generatePassword() {
       addString = alphabetUpper + specialSign;
 
       for (var i = 0; i < passLength; i++) {
-      passString = passString + addString.charAt(randomInt(0,addString.length));
+        passString =
+          passString + addString.charAt(randomInt(0, addString.length));
       }
 
       return passString;
     case 12:
-      addString =  alphabetUpper;
+      addString = alphabetUpper;
 
       for (var i = 0; i < passLength; i++) {
-      passString = passString + addString.charAt(randomInt(0,addString.length));
+        passString =
+          passString + addString.charAt(randomInt(0, addString.length));
       }
 
       return passString;
@@ -223,7 +216,8 @@ function generatePassword() {
       addString = numberSign + specialSign;
 
       for (var i = 0; i < passLength; i++) {
-      passString = passString + addString.charAt(randomInt(0,addString.length));
+        passString =
+          passString + addString.charAt(randomInt(0, addString.length));
       }
 
       return passString;
@@ -231,37 +225,31 @@ function generatePassword() {
       addString = numberSign;
 
       for (var i = 0; i < passLength; i++) {
-      passString = passString + addString.charAt(randomInt(0,addString.length));
+        passString =
+          passString + addString.charAt(randomInt(0, addString.length));
       }
 
       return passString;
     case 15:
-      addString =  specialSign;
+      addString = specialSign;
 
       for (var i = 0; i < passLength; i++) {
-      passString = passString + addString.charAt(randomInt(0,addString.length));
+        passString =
+          passString + addString.charAt(randomInt(0, addString.length));
       }
 
       return passString;
     case 16:
-      return "No Password";
+      //No prompts accepted
+      return "No password given. Please try again.";
   }
-  
-
-  
-
-  
-
 }
-
-
 
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-
 }
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
