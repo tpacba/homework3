@@ -10,22 +10,24 @@ var numberSign = "0123456789";
 var specialSign = "!#$%&*+-/:;<=>?@\^_~";
 
 
+
 function generatePassword() {
-  var passLength = prompt("How long do your want your password to be?");
+  var passLength = parseInt(prompt("How long do your want your password to be?"));
   var smallCase = confirm("Do you want small cases?");
   var upperCase = confirm("Do you want upper cases?");
   var numCase = confirm("Do you want numbers?");
   var specialCase = confirm("Do you want special cases?");
 
   var pushArray;
+  var passArray = [];
 
   if (smallCase || upperCase || numCase || specialCase) {
     pushArray = alphabetSmall + alphabetUpper + numberSign + specialSign;
-    for (var i = 0; i < passLength.parsInt(); i++) {
-      
+    for (var i = 0; i < passLength; i++) {
+      passArray.push(pushArray.charAt(0));
     }
-    console.log(passLength.parsInt());
-    return pushArray;
+    console.log(passArray);
+    return passArray;
   } 
 }
 
