@@ -9,6 +9,7 @@ var alphabetUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numberSign = "0123456789";
 var specialSign = "!#$%&*+-/:;<=>?@\^_~";
 
+// Returns a random integer between ranges
 function randomInt(min, max) {
   var x = Math.floor((Math.random() * max) + min);
   return x;
@@ -23,15 +24,234 @@ function generatePassword() {
 
   var addString;
   var passString = "";
-
+  
+  /*  // Case 1
   if (smallCase || upperCase || numCase || specialCase) {
-    addString = alphabetSmall + alphabetUpper + numberSign + specialSign; 
+
+    // Combine all needed characters for the prompt into addString
+    addString = alphabetSmall + alphabetUpper + numberSign + specialSign;
+
+    // Count how long the password should be
     for (var i = 0; i < passLength; i++) {
-      passString = passString + addString.charAt(randomInt(0,addString.length - 1))
+
+      // Add a random character from addString into passString
+      passString = passString + addString.charAt(randomInt(0,addString.length)); //
     }
-    console.log(passString);
-    return passString; // Returns a string
-  } 
+
+    // Return a string
+    return passString; 
+  } */
+
+
+
+
+
+
+
+
+
+
+
+// Tried to use switch...Realized it's more coding
+
+  var order;
+  if (smallCase) {
+    if (upperCase) {
+      if (numCase) {
+        if (specialCase) {
+          order = 1; //case 1: small, upper, num, special
+        } else {
+          order = 2; //case 2: small, upper, num
+        }
+      } else {
+        if (specialCase) {
+          order = 3; //case 3: small, upper, special
+        } else {
+          order = 4; //case 4: small, upper
+        }
+      }
+    } else {
+      if (numCase) {
+        if (specialCase) {
+          order = 5; //case 5: small, num, special
+        } else {
+          order = 6; //case 6: small, num
+        }
+      } else {
+        if (specialCase) {
+          order = 7; //case 7: small, special
+        } else {
+          order = 8; //case 8: small
+        }
+      }
+    }
+  } else {
+    if (upperCase) {
+      if (numCase) {
+        if (specialCase) {
+          order = 9; //case 9: upper, num, special
+        } else {
+          order = 10; //case 10: upper, num
+        }
+      } else {
+        if (specialCase) {
+          order = 11; //case 11: upper, special
+        } else {
+          order = 12; //case 12: upper
+        }
+      }
+    } else {
+      if (numCase) {
+        if (specialCase) {
+          order = 13; //case 13: num, special
+        } else {
+          order = 14; //case 14: num
+        }
+      } else {
+        if (specialCase) {
+          order = 15; //case 15: special
+        } else {
+          order = 16; //case 16: ...
+        }
+      }
+    }
+  }
+
+  switch (order) {
+    case 1:
+      // Combine all needed characters for the prompt into addString
+      addString = alphabetSmall + alphabetUpper + numberSign + specialSign;
+
+      // Count how long the password should be
+      for (var i = 0; i < passLength; i++) {
+
+      // Add a random character from addString into passString
+      passString = passString + addString.charAt(randomInt(0,addString.length));
+      }
+
+      // Return a string
+      return passString;
+    case 2:
+      addString = alphabetSmall + alphabetUpper + numberSign;
+
+      for (var i = 0; i < passLength; i++) {
+      passString = passString + addString.charAt(randomInt(0,addString.length));
+      }
+
+      return passString;
+    case 3:
+      addString = alphabetSmall + alphabetUpper + specialSign;
+
+      for (var i = 0; i < passLength; i++) {
+      passString = passString + addString.charAt(randomInt(0,addString.length));
+      }
+
+      return passString;
+    case 4:
+      addString = alphabetSmall + alphabetUpper;
+
+      for (var i = 0; i < passLength; i++) {
+      passString = passString + addString.charAt(randomInt(0,addString.length));
+      }
+
+      return passString;
+    case 5:
+      addString = alphabetSmall + numberSign + specialSign;
+
+      for (var i = 0; i < passLength; i++) {
+      passString = passString + addString.charAt(randomInt(0,addString.length));
+      }
+
+      return passString;
+    case 6:
+      addString = alphabetSmall + numberSign;
+
+      for (var i = 0; i < passLength; i++) {
+      passString = passString + addString.charAt(randomInt(0,addString.length));
+      }
+
+      return passString;
+    case 7:
+      addString = alphabetSmall  + specialSign;
+
+      for (var i = 0; i < passLength; i++) {
+      passString = passString + addString.charAt(randomInt(0,addString.length));
+      }
+
+      return passString;
+    case 8:
+      addString = alphabetSmall;
+
+      for (var i = 0; i < passLength; i++) {
+      passString = passString + addString.charAt(randomInt(0,addString.length));
+      }
+
+      return passString;
+    case 9:
+      addString = alphabetUpper + numberSign + specialSign;
+
+      for (var i = 0; i < passLength; i++) {
+      passString = passString + addString.charAt(randomInt(0,addString.length));
+      }
+
+      return passString;
+    case 10:
+      addString = alphabetUpper + numberSign;
+
+      for (var i = 0; i < passLength; i++) {
+      passString = passString + addString.charAt(randomInt(0,addString.length));
+      }
+
+      return passString;
+    case 11:
+      addString = alphabetUpper + specialSign;
+
+      for (var i = 0; i < passLength; i++) {
+      passString = passString + addString.charAt(randomInt(0,addString.length));
+      }
+
+      return passString;
+    case 12:
+      addString =  alphabetUpper;
+
+      for (var i = 0; i < passLength; i++) {
+      passString = passString + addString.charAt(randomInt(0,addString.length));
+      }
+
+      return passString;
+    case 13:
+      addString = numberSign + specialSign;
+
+      for (var i = 0; i < passLength; i++) {
+      passString = passString + addString.charAt(randomInt(0,addString.length));
+      }
+
+      return passString;
+    case 14:
+      addString = numberSign;
+
+      for (var i = 0; i < passLength; i++) {
+      passString = passString + addString.charAt(randomInt(0,addString.length));
+      }
+
+      return passString;
+    case 15:
+      addString =  specialSign;
+
+      for (var i = 0; i < passLength; i++) {
+      passString = passString + addString.charAt(randomInt(0,addString.length));
+      }
+
+      return passString;
+    case 16:
+      return "No Password";
+  }
+  
+
+  
+
+  
+
 }
 
 
