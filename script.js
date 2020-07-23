@@ -9,7 +9,10 @@ var alphabetUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 var numberSign = "0123456789";
 var specialSign = "!#$%&*+-/:;<=>?@\^_~";
 
-
+function randomInt(min, max) {
+  var x = Math.floor((Math.random() * max) + min);
+  return x;
+}
 
 function generatePassword() {
   var passLength = parseInt(prompt("How long do your want your password to be?"));
@@ -18,16 +21,16 @@ function generatePassword() {
   var numCase = confirm("Do you want numbers?");
   var specialCase = confirm("Do you want special cases?");
 
-  var pushArray;
-  var passArray = [];
+  var addString;
+  var passString = "";
 
   if (smallCase || upperCase || numCase || specialCase) {
-    pushArray = alphabetSmall + alphabetUpper + numberSign + specialSign;
+    addString = alphabetSmall + alphabetUpper + numberSign + specialSign; 
     for (var i = 0; i < passLength; i++) {
-      passArray.push(pushArray.charAt(0));
+      passString = passString + addString.charAt(randomInt(0,addString.length - 1))
     }
-    console.log(passArray);
-    return passArray;
+    console.log(passString);
+    return passString; // Returns a string
   } 
 }
 
