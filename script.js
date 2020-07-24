@@ -51,18 +51,6 @@ function generatePassword() {
   if (confirm("Do you want special characters?")) {
     addChar(specialSign);
   }
-
-
-  
-if (totalString == "") {
-  return "No password to give. Please try again."
-} else {
-  var passwordString = "";
-  for (var i = 0; i < passLength; i++) {
-    passwordString = passwordString + totalString.charAt(randomInt(0, totalString.length));
-  } 
-  return passwordString;
-}
   
 
 
