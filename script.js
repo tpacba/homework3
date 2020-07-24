@@ -22,17 +22,108 @@ function generatePassword() {
     // Stop the function if passLength is NaN
     if (isNaN(passLength)) {
       alert("Please enter a valid number");
-      return "No password given. Please try again.";
+      return "No password to give. Please try again.";
     }
   } while (passLength < 8 || passLength > 128) // Restrict the user from continuing with do while loop if prompt is less than 8 or greater than 128
+  
+  console.log("Password length will be " + passLength + " characters.");
+  
+  var totalString = "";
 
+  function addChar (type) {
+    totalString = totalString + type;
+    console.log("Characters included: " + totalString);
+    return totalString;
+  }
+
+  if (confirm("Do you want small cases?")) {
+    addChar(alphabetSmall);
+  }
+
+  if (confirm("Do you want upper cases?")) {
+    addChar(alphabetUpper);
+  }
+
+  if (confirm("Do you want numbers?")) {
+    addChar(numberSign);
+  }
+
+  if (confirm("Do you want special characters?")) {
+    addChar(specialSign);
+  }
+
+
+  
+if (totalString == "") {
+  return "No password to give. Please try again."
+} else {
+  var passwordString = "";
+  for (var i = 0; i < passLength; i++) {
+    passwordString = passwordString + totalString.charAt(randomInt(0, totalString.length));
+  } 
+  return passwordString;
+}
+  
+
+
+
+
+
+  /*
   // Declare the rest of the confirms
   var smallCase = confirm("Do you want small cases?");
-  var upperCase = confirm("Do you want upper cases?");
-  var numCase = confirm("Do you want numbers?");
-  var specialCase = confirm("Do you want special cases?");
+  console.log(smallCase);
+  if (smallCase !== false) {
+    alphabetSmall = "";
+  }
+  console.log(alphabetSmall);
 
-  // Declare a variable to be used later as an expression for the switch statement, will be assigned as a combination
+  var upperCase = confirm("Do you want upper cases?");
+  console.log(upperCase)
+  if (upperCase !== false) {
+    alphabetUpper = "";
+  }
+  console.log(alphabetUpper);
+
+  var numCase = confirm("Do you want numbers?");
+  console.log(numCase);
+  if (numCase !== false) {
+    numberSign = ""
+  }
+  console.log(numberSign);
+
+  var specialCase = confirm("Do you want special cases?");
+  console.log(specialCase);
+  if (specialCase !== false) {
+    specialSign = "";
+  }
+  console.log(specialSign);
+
+ 
+  // addString will combine all the characters, passString will gain characters randomly pulled from addString
+  var addString = alphabetSmall + alphabetUpper + numberSign + specialSign;
+  console.log(addString);
+  // Combine all needed characters for the prompt into addString
+  var passString = "";
+  
+
+
+  // Count how long the password should be
+  for (var i = 0; i < passLength; i++) {
+    // Add a random character from addString into passString
+    passString =
+      passString + addString.charAt(randomInt(0, addString.length));
+  }
+
+  // Return passString. If passString is empty, return nothing.
+  if (passString == "") {
+    return "No password given. Please try again.";
+  } else {
+  return passString;
+  }
+
+  
+   // Declare a variable to be used later as an expression for the switch statement, will be assigned as a combination
   var order;
 
   //Determine how many combinations of prompts, should be 16 combos
@@ -97,10 +188,6 @@ function generatePassword() {
       }
     }
   }
-
-  // addString will combine all the characters, passString will gain characters randomly pulled from addString
-  var addString;
-  var passString = "";
 
   switch (order) {
     case 1:
@@ -245,7 +332,7 @@ function generatePassword() {
     case 16:
       //No prompts chosen
       return "No password given. Please try again.";
-  }
+  } */
 }
 
 // Assignment Code
