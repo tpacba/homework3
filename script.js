@@ -65,15 +65,13 @@ function generatePassword() {
   }
 }
 
-// Assignment Code
-var generateBtn = document.querySelector("#generate");
+var generateBtn = document.querySelector("#generate"); // Call the button with id #generate into variable generateBtn
 
-// Write password to the #password input
 function writePassword() {
-  var password = generatePassword(); // Only function that hasn't been called yet
-  var passwordText = document.querySelector("#password");
+  var password = generatePassword(); // Return a string from function generatePassword and set it to variable password
+  var passwordText = document.querySelector("#password"); // Call the text area with id #password into variable passwordText
 
-  passwordText.value = password;
+  passwordText.value = password; // Set the password string (from line 71) to the value of text area #password (line 72)
 }
-// Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+
+generateBtn.addEventListener("click", writePassword); // Run the function writePassword, which sets the password into the text area, when button is clicked
