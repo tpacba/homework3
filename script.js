@@ -1,7 +1,7 @@
 // All the characters in one string, will use charAt to call later
 var alphabetSmall = "abcdefghijklmnopqrstuvwxyz";
 var alphabetUpper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-var numberSign = "0123456789";
+var numberSign = "01234567890123456789"; //Added more numbers to try to even out the chances of numbers getting picked at random
 var specialSign = "!#$%&*+-/:;<=>?@^_~";
 
 // Returns a random integer between ranges but subtract 1 from max to apply real-time counting
